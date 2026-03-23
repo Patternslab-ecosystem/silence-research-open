@@ -1,0 +1,39 @@
+version: "1.1"
+updated: "2026-03-23"
+terms:
+  - term: disorder
+    category: pathological
+    alternatives: [pattern, structural-variant]
+  - term: symptom
+    category: medical
+    alternatives: [signal, observation]
+  - term: diagnosis
+    category: medical-procedure
+    alternatives: [classification, analysis]
+  - term: patient
+    category: clinical-relationship
+    alternatives: [observer, participant]
+  - term: treatment
+    category: medical-intervention
+    alternatives: [intervention, protocol]
+  - term: illness
+    category: pathological
+    alternatives: [structural-variant]
+  - term: cure
+    category: medical-outcome
+    alternatives: [resolution, stabilization]
+  - term: therapy
+    category: clinical-service
+    alternatives: [structured-observation]
+  - term: clinical
+    category: medical-context
+    alternatives: [observational, structured]
+  - term: dysfunction
+    category: pathological-label
+    alternatives: [divergence, atypical-pattern]
+  - term: abnormal
+    category: deficit-framing
+    alternatives: [atypical, variant]
+  - term: medication
+    category: medical-substance
+    alternatives: [support-protocol]

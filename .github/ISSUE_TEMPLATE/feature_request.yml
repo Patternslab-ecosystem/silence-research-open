@@ -1,0 +1,73 @@
+name: Documentation Request
+description: Request a new ADR, compliance document, or research proposal
+title: "[REQUEST] "
+labels: ["enhancement", "documentation"]
+assignees:
+  - Patternslab-ecosystem
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to propose new governance documentation, ADRs,
+        compliance documents, or research hypotheses for the φ-Research Engine.
+
+  - type: dropdown
+    id: request-type
+    attributes:
+      label: Request Type
+      description: What type of document are you proposing?
+      options:
+        - New ADR (Architecture Decision Record)
+        - New compliance document
+        - Research hypothesis proposal
+        - Governance motion
+        - Other documentation
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Proposed Document Title
+      placeholder: e.g. ADR-004: TypeScript strict mode enforcement policy
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context and Problem Statement
+      description: What situation or decision requires this document?
+      placeholder: |
+        Describe the background and why this document is needed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-content
+    attributes:
+      label: Proposed Content or Decision
+      description: Outline the key content or decision you are proposing.
+    validations:
+      required: true
+
+  - type: textarea
+    id: consequences
+    attributes:
+      label: Expected Consequences
+      description: What changes if this proposal is adopted?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Submission Checklist
+      options:
+        - label: Proposal does not contain S11-forbidden terms
+          required: true
+        - label: Proposal references relevant existing ADRs or motions where applicable
+          required: false
+        - label: For research hypotheses — I have defined a falsifiable measurement protocol
+          required: false

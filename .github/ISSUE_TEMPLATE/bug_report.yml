@@ -1,0 +1,64 @@
+name: Documentation Issue
+description: Report incorrect information, broken links, or compliance concerns
+title: "[BUG] "
+labels: ["bug", "documentation"]
+assignees:
+  - Patternslab-ecosystem
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve SILENCE.OBJECTS governance documentation.
+        Please provide as much detail as possible.
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Issue Type
+      description: What kind of documentation issue are you reporting?
+      options:
+        - Incorrect information
+        - Broken link
+        - Compliance concern
+        - S11 Language Standard violation
+        - Outdated content
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: file-path
+    attributes:
+      label: File Path
+      description: Which file contains the issue?
+      placeholder: e.g. compliance/eu-ai-act/risk-classification.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+      description: Describe the problem clearly and specifically.
+      placeholder: |
+        The document states X, but the correct information is Y.
+        Reference: [link to authoritative source]
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-correction
+    attributes:
+      label: Suggested Correction
+      description: What should the correct content say?
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: s11-check
+    attributes:
+      label: S11 Language Standard
+      options:
+        - label: My issue report does not contain S11-forbidden terms
+          required: true

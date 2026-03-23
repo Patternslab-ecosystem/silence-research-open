@@ -1,0 +1,24 @@
+version: "1.1"
+updated: "2026-03-23"
+approved_alternatives:
+  - preferred: pattern
+    replaces: disorder
+    context: behavioral observation
+  - preferred: signal
+    replaces: symptom
+    context: data observation
+  - preferred: classification
+    replaces: diagnosis
+    context: analysis results
+  - preferred: observer
+    replaces: patient
+    context: user relationship
+  - preferred: structural variant
+    replaces: illness
+    context: behavioral description
+  - preferred: divergence
+    replaces: dysfunction
+    context: pattern analysis
+  - preferred: atypical
+    replaces: abnormal
+    context: statistical description

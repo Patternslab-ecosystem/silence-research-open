@@ -1,0 +1,26 @@
+version: "1.0"
+updated: "2026-Q1"
+period: "2026-2030"
+
+technical_quality:
+  test_coverage_min: 80
+  typescript_strict: true
+  ci_pass_rate_target: 0.98
+  zero_critical_vulnerabilities: true
+  lighthouse_score_min: 90
+
+compliance:
+  eu_ai_act_status: limited_risk
+  gdpr_zero_pii: true
+  s11_violations_allowed: 0
+  art_50_disclosure: implemented
+
+research_output:
+  hypotheses_active: 2
+  publications_target_2030: 3
+  phi_research_engine: active
+
+ecosystem_growth:
+  public_repos: 3
+  npm_packages_published_target: 5
+  github_stars_target_2027: 500

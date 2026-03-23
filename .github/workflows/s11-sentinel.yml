@@ -1,0 +1,43 @@
+name: S11 Language Sentinel
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  s11-check:
+    name: S11 Language Standard
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run S11 Sentinel
+        run: |
+          echo "Running S11 Language Standard sentinel..."
+          FORBIDDEN='\b(therapy|diagnosis|treatment|disorder|symptom|patient|illness|cure|medication|clinical|dysfunction|abnormal)\b'
+
+          VIOLATIONS=$(grep -rniE "$FORBIDDEN" \
+            --exclude-dir=.git \
+            --exclude=CHANGELOG.md \
+            --exclude=S11-LANGUAGE-STANDARD.md \
+            --exclude=forbidden-terms.yaml \
+            --exclude=alternatives.yaml \
+            --include="*.md" \
+            --include="*.yaml" \
+            --include="*.ts" \
+            --include="*.tsx" \
+            --include="*.js" \
+            . 2>/dev/null | \
+            grep -v "// S11-ALLOWED" | \
+            grep -v "alternatives\|alternative\|replaces\|forbidden\|Use Instead" | \
+            grep -v "framing\|label\|category\|context\|preferred" || true)
+
+          if [ -n "$VIOLATIONS" ]; then
+            echo ""
+            echo "::error::S11 Language Standard violations detected:"
+            echo "$VIOLATIONS"
+            echo ""
+            echo "Review compliance/s11/S11-LANGUAGE-STANDARD.md for approved alternatives."
+            exit 1
+          fi
+
+          echo "✓ S11: No violations detected — PASS"

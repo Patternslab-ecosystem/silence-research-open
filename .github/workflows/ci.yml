@@ -1,0 +1,27 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Markdown lint
+        uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          globs: '**/*.md'
+          config: .markdownlint.json
+      - name: S11 Language Sentinel
+        run: |
+          FORBIDDEN='\b(easy|simple|just|basic|therapy|diagnosis|treatment|disorder|symptom|patient|illness|cure|medication|clinical|dysfunction|abnormal)\b'
+          if grep -rniE "$FORBIDDEN" \
+            --exclude-dir=.git \
+            --exclude=CHANGELOG.md \
+            --exclude=S11-LANGUAGE-STANDARD.md \
+            --exclude=forbidden-terms.yaml \
+            --exclude=alternatives.yaml \
+            --include="*.md" --include="*.yaml" . 2>/dev/null | \
+            grep -v "alternatives\|alternative\|replaces\|forbidden\|Use Instead\|category\|context\|preferred\|not.*disorder\|not.*therapy\|NOT.*THERAPY\|Pattern.*not\|does not\|framing\|label"; then
+            echo "::error::S11 violation detected"
+            exit 1
+          fi
+          echo "✓ S11: PASS"
